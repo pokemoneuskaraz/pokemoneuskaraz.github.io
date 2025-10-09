@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-gray-800">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pokémon Jokoetako Terminoen Itzulpenak</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+<style>
+body {
+  background-image: url("pokeball_dark.jpeg");
+  background-repeat: repeat;
+  background-size: 80px;
+}
+</style>
+<body class="flex flex-col items-center justify-start min-h-screen py-12 px-4">
+  
+  <ul class="bg-gray-500 rounded-xl flex items-center">
+        <li><a href="main.html"><img class="text-white text-xl rounded-xl p-4 hover:bg-red-400" src="pokemon_titulua.png" style="height: 80px; object-fit: contain;"></a></li>
+        <li><a class="h-20 flex items-center text-white text-xl rounded-xl p-4 hover:bg-red-400" style="height: 80px" href="pokedex_main.html">Euskarazko Pokédexa</a></li>
+        <li><a class="h-20 flex items-center text-white text-xl rounded-xl p-4 hover:bg-red-400" style="height: 80px" href="terminoen_hiztegia.html">Terminoen Hiztegia</a></li>
+        <li><a class="h-20 flex items-center text-white text-xl rounded-xl p-4 hover:bg-red-400" style="height: 80px" href="pokedex_main.html">Euskarazko Jokoak</a></li>
+  </ul>
+
+  <h1 class="text-4xl font-bold m-6 text-white">Pokémon Jokoetako Terminoen Itzulpenak</h1>
+
+  <div class="flex items-center p-4">
+    <button class="text-3xl rounded-xl bg-gray-600 text-white py-2 px-3 mx-2 hover:bg-gray-400" onclick="renderSheet('Erasoak')">Erasoak</button>
+    <button class="text-3xl rounded-xl bg-gray-600 text-white py-2 px-3 mx-2 hover:bg-gray-400" onclick="renderSheet('Lekuak')">Lekuak</button>
+    <button class="text-3xl rounded-xl bg-gray-600 text-white py-2 px-3 mx-2 hover:bg-gray-400" onclick="renderSheet('Motak')">Motak</button>
+    <button class="text-3xl rounded-xl bg-gray-600 text-white py-2 px-3 mx-2 hover:bg-gray-400" onclick="renderSheet('Objektuak')">Objektuak</button>
+    <button class="text-3xl rounded-xl bg-gray-600 text-white py-2 px-3 mx-2 hover:bg-gray-400" onclick="renderSheet('Pertsonaiak')">Pertsonaiak</button>
+    <button class="text-3xl rounded-xl bg-gray-600 text-white py-2 px-3 mx-2 hover:bg-gray-400" onclick="renderSheet('Motak')">Motak</button>
+    <button class="text-3xl rounded-xl bg-gray-600 text-white py-2 px-3 mx-2 hover:bg-gray-400" onclick="renderSheet('Abileziak')">Abileziak</button>
+    <button class="text-3xl rounded-xl bg-gray-600 text-white py-2 px-3 mx-2 hover:bg-gray-400" onclick="renderSheet('Izaerak')">Izaerak</button>
+  </div>
+
+  <h1 class="text-4xl font-bold m-6 text-white" id="tableTitle">Erasoak</h1>
+
+  <input
+    type="text"
+    id="searchInput"
+    placeholder="Bilatu..."
+    class="mb-6 px-4 py-2 w-full max-w-md border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500"
+  >
+
+  <button id="backToTop"
+    class="fixed bottom-5 right-5 px-4 py-2 bg-red-400 text-white rounded-xl shadow hover:bg-red-800">
+    Gora itzuli
+  </button>
+
+  <div class="overflow-x-auto w-full max-w-4xl">
+    <table id="dataTable" class="min-w-full bg-white shadow rounded-xl overflow-hidden border-separate border-spacing-0">
+      <thead class="bg-red-400 text-white">
+        <tr>
+          <th class="px-6 py-3 text-left text-sm font-semibold">Errore bat gertatu da, ezin izan da informazioa kargatu. Kontaktatu administratzailearekin, mesedez.</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+
+  <script>
+
+    fetch('itzulpenak.ods')  // path to your Excel file
+      .then(res => res.arrayBuffer())
+      .then(data => {
+        // Read the Excel data
+        workbook = XLSX.read(data, { type: 'array' });
+
+        // Render the first sheet by default
+        renderSheet(workbook.SheetNames[0]);
+      })
+      .catch(err => {
+        console.error('Error loading Excel file:', err);
+      });
+
+    function renderSheet(sheetName) {
+
+      const title = document.getElementById('tableTitle');
+      title.innerHTML = sheetName;
+      const sheet = workbook.Sheets[sheetName];
+      const json = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+      const table = document.getElementById('dataTable');
+      // Clear old table content
+      table.innerHTML = `
+          <thead class="bg-red-400 text-white">
+            <tr>
+              <th class="px-6 py-3 text-left text-sm font-semibold">Euskaraz</th>
+              <th class="px-6 py-3 text-left text-sm font-semibold">Gazteleraz</th>
+              <th class="px-6 py-3 text-left text-sm font-semibold">Ingelesez</th>
+            </tr>
+          </thead>
+        `;
+      const trContainer = document.createElement('tbody');
+      trContainer.className = 'divide-y divide-gray-200';
+
+      json.forEach((row, i) => {
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-gray-400 bg-gray-600 text-white';
+        row.forEach(cell => {
+          const cellElem = document.createElement('td');
+          cellElem.className = 'px-6 py-4';
+          cellElem.textContent = cell ?? '';
+          tr.appendChild(cellElem);
+        });
+        trContainer.appendChild(tr);
+      });
+      table.appendChild(trContainer);
+    }
+
+
+    const searchInput = document.getElementById('searchInput');
+    const table = document.getElementById('dataTable');
+    const rows = table.getElementsByTagName('tr');
+
+    searchInput.addEventListener('keyup', function() {
+      const filter = searchInput.value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); // use lowercase and remove accents
+      console.log(filter);
+      for (let i = 1; i < rows.length; i++) { // skip header row
+        const cells = rows[i].getElementsByTagName('td');
+        let found = false;
+        for (let j = 0; j < cells.length; j++) {
+          const cellText = cells[j].textContent.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+          if (cellText.indexOf(filter) > -1) {
+            found = true;
+            break;
+          }
+        }
+        rows[i].style.display = found ? '' : 'none';
+      }
+    });
+  </script>
+
+  <script>
+    const btn = document.getElementById("backToTop");
+    btn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+.normal {
+  background: linear-gradient(0deg, #A8A77A, #C6C6A7);
+}
+.fire {
+  background: linear-gradient(0deg, #FF4500, #FFA500);
+}
+
+.water {
+  background: linear-gradient(0deg, #00008B, #00BFFF);
+}
+
+.grass {
+  background: linear-gradient(0deg, #006400, #7CFC00);
+}
+
+.electric {
+  background: linear-gradient(0deg, #FFD700, #FFFFE0);
+}
+
+.ice {
+  background: linear-gradient(0deg, #00FFFF, #ADD8E6);
+}
+
+.fighting {
+  background: linear-gradient(0deg, #8B0000, #FF6347);
+}
+
+.poison {
+  background: linear-gradient(0deg, #800080, #DA70D6);
+}
+
+.ground {
+  background: linear-gradient(0deg, #8B4513, #DEB887);
+}
+
+.flying {
+  background: linear-gradient(0deg, #87CEEB, #E0FFFF);
+}
+
+.psychic {
+  background: linear-gradient(0deg, #FF1493, #FFB6C1);
+}
+
+.bug {
+  background: linear-gradient(0deg, #556B2F, #9ACD32);
+}
+
+.rock {
+  background: linear-gradient(0deg, #A9A9A9, #D3D3D3);
+}
+
+.ghost {
+  background: linear-gradient(0deg, #4B0082, #9370DB);
+}
+
+.dragon {
+  background: linear-gradient(0deg, #00008B, #8A2BE2);
+}
+
+.dark {
+  background: linear-gradient(0deg, #0B0B0B, #434343);
+}
+
+.steel {
+  background: linear-gradient(0deg, #B0C4DE, #DCDCDC);
+}
+
+.fairy {
+  background: linear-gradient(0deg, #FFB6C1, #FFE4E1);
+}
+
+
+.red {
+  background: linear-gradient(135deg, #FF0000, #FF7F7F);
+}
+.blue {
+  background: linear-gradient(135deg, #0000FF, #6495ED);
+}
+.yellow {
+  background: linear-gradient(135deg, #FFD700, #FFFACD);
+}
+
+.gold {
+  background: linear-gradient(135deg, #ffa845, #fff1a4);
+}
+.silver {
+  background: linear-gradient(135deg, #C0C0C0, #E8E8E8);
+}
+.crystal {
+  background: linear-gradient(135deg, #00CED1, #AFEEEE);
+}
+
+.ruby {
+  background: linear-gradient(135deg, #B22222, #FF6347);
+}
+.sapphire {
+  background: linear-gradient(135deg, #191970, #1E90FF);
+}
+.emerald {
+  background: linear-gradient(135deg, #008000, #00FA9A);
+}
+.firered {
+  background: linear-gradient(135deg, #FF4500, #FF6347);
+}
+.leafgreen {
+  background: linear-gradient(135deg, #228B22, #90EE90);
+}
+
+.diamond {
+  background: linear-gradient(135deg, #1E90FF, #B0E0E6);
+}
+.pearl {
+  background: linear-gradient(135deg, #FFB6C1, #FFE4E1);
+}
+.platinum {
+  background: linear-gradient(135deg, #A9A9A9, #E6E6E6);
+}
+.heartgold {
+  background: linear-gradient(135deg, #FFD700, #FFEC8B);
+}
+.soulsilver {
+  background: linear-gradient(135deg, #C0C0C0, #DCDCDC);
+}
+.black {
+  background: linear-gradient(135deg, #000000, #434343);
+}
+.white {
+  background: linear-gradient(135deg, #FFFFFF, #F5F5F5);
+}
+.black2 {
+  background: linear-gradient(135deg, #000000, #1E90FF);
+}
+.white2 {
+  background: linear-gradient(135deg, #FFFFFF, #FF7F7F);
+}
+
+.x {
+  background: linear-gradient(135deg, #4169E1, #87CEFA);
+}
+.y {
+  background: linear-gradient(135deg, #8B0000, #FF4500);
+}
+.omegaruby {
+  background: linear-gradient(135deg, #B22222, #FF4500);
+}
+.alphasapphire {
+  background: linear-gradient(135deg, #191970, #00BFFF);
+}
+
+.sun {
+  background: linear-gradient(135deg, #FF8C00, #FFD700);
+}
+.moon {
+  background: linear-gradient(135deg, #191970, #9370DB);
+}
+.ultrasun {
+  background: linear-gradient(135deg, #FF4500, #FFD700);
+}
+.ultramoon {
+  background: linear-gradient(135deg, #4B0082, #8A2BE2);
+}
+
+.sword {
+  background: linear-gradient(135deg, #1E90FF, #00BFFF);
+}
+.shield {
+  background: linear-gradient(135deg, #FF1493, #FF69B4);
+}
+.bdsp {
+  background: linear-gradient(135deg, #1E90FF, #FFB6C1);
+}
+.legendsarceus {
+  background: linear-gradient(135deg, #2F4F4F, #E0FFFF);
+}
+.scarlet {
+  background: linear-gradient(135deg, #B22222, #FF6347);
+}
+.violet {
+  background: linear-gradient(135deg, #4B0082, #9370DB);
+}
+
+body {
+  background-image: url("pokeball_dark.jpeg");
+  background-repeat: repeat;
+  background-size: 80px;
+}
+
+.clickable {
+  cursor: pointer;    
+  transition: background 0.2s;
+}

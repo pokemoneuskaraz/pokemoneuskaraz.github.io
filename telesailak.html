@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-gray-800">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pokémon Jokoetako Terminoen Itzulpenak</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+<style>
+body {
+  background-image: url("pokeball_dark.jpeg");
+  background-repeat: repeat;
+  background-size: 80px;
+}
+</style>
+<body class="flex flex-col items-center justify-start min-h-screen py-12 px-4">
+  
+  <ul class="bg-gray-500 rounded-xl flex items-center">
+        <li><a href="main.html"><img class="text-white text-xl rounded-xl p-4 hover:bg-red-400" src="pokemon_titulua.png" style="height: 80px; object-fit: contain;"></a></li>
+        <li><a class="h-20 flex items-center text-white text-xl rounded-xl p-4 hover:bg-red-400" style="height: 80px" href="pokedex_main.html">Euskarazko Pokédexa</a></li>
+        <li><a class="h-20 flex items-center text-white text-xl rounded-xl p-4 hover:bg-red-400" style="height: 80px" href="terminoen_hiztegia.html">Terminoen Hiztegia</a></li>
+        <li><a class="h-20 flex items-center text-white text-xl rounded-xl p-4 hover:bg-red-400" style="height: 80px" href="pokedex_main.html">Euskarazko Jokoak</a></li>
+  </ul>
+
+  <h1 class="text-4xl font-bold m-6 text-white">Pokémon Telesaila</h1>
+  <h1 class="text-xl text-white m-6">Esker bereziak <a class="text-red-400 hover:text-red-700" href="https://www.euskal-encodings.eus/">Euskal Encodingsi</a>, euskarazko ikus-entzunezkoen arloan horrenbeste laguntzeagatik.</h1>
+  <div class="bg-gray-100 bg-opacity-20 rounded-xl flex items-stretch shadow-xl my-4 w-full">
+    <div class="flex-shrink-0 flex items-center">
+      <a href="https://www.euskal-encodings.eus/index.php?topic=6561.0" target="_blank"><img src="denboraldia1.jpg" class="m-6 rounded-xl" style="height: 500px;"></a>
+    </div>
+    <div class="w-1 bg-gray-100 bg-opacity-20 height-auto my-auto rounded-xl" style="height: 500px;"></div>
+    <div class="flex-1 p-6 h-full">
+      <p class="text-white text-4xl p-2 text-center">Pokemon: 1. denboraldia</p>
+      <p class="text-white text-xl my-4">Ash 10 urte bete berri dituen mutikoa da, Paleta herrikoa. 10 urterekin hasten dira bertan haurrak Pokemon abenturan murgiltzen, egunen batean entrenatzaile bikainak izateko asmoz. Ashek ez zuen lortu Bulbasaur, Charmander edo Squirtle oinarrizko Pokemonak eskuratzea, hauen ordez Pikachu izeneko Pokemon elektriko xelebrea eman zioten. Azkenean Ash eta Pikachu lagunak egin eta abentura bila joango dira, Misty eta Brock lagun dituztela.</p>
+      <p class="text-white text-xl my-4"><b>Formatua: </b>Euskarara bikoiztua</p>
+      <p class="text-white text-xl my-4"><b>Denboraldiak: </b>1</p>
+      <p class="text-white text-xl my-4"><b>Kapituluak: </b>51/52</p>
+      <p class="text-white text-xl my-4"><b>Generoa: </b>Fantasia, Komedia, Abentura</p>
+      <p class="text-white text-xl my-4"><b>Zuzendaria: </b>Kunihiko Yuyama, Masamitsu Hidaka</p>
+      <p class="text-white text-xl my-4"><b>Gidoia: </b>Atsuhiro Tomioka, Hideki Sonoda, Yukiyoshi Ôhashi, Junki Takegami, Shinzo Fujita, Shoji Yonemura, Takeshi Shudo</p>
+      <p class="text-white text-xl my-4"><b>Musika: </b>Shinji Miyazaki</p>
+      <p class="text-white text-xl my-4 rounded-xl bg-red-400 p-4 inline-block hover:bg-red-700"><a href="https://www.euskal-encodings.eus/index.php?topic=6561.0" target="_blank">Ikusi hemen!</a></p>
+    </div>
+  </div>
+  <div class="bg-gray-100 bg-opacity-20 rounded-xl flex items-stretch shadow-xl my-4 w-full">
+    <div class="flex-shrink-0 flex items-center">
+      <a href="https://www.euskal-encodings.eus/index.php?topic=6563.0" target="_blank"><img src="denboraldia5.jpg" class="m-6 rounded-xl" style="height: 500px;"></a>
+    </div>
+    <div class="w-1 bg-gray-100 bg-opacity-20 height-auto my-auto rounded-xl" style="height: 500px;"></div>
+    <div class="flex-1 p-6 h-full">
+      <p class="text-white text-4xl p-2 text-center">Pokemon: 5. denboraldia</p>
+      <p class="text-white text-xl my-4">Pokemon telesailaren 5. denboraldia, 'Pokemon: The Original Series' saileko azkena.</p>
+      <p class="text-white text-xl my-4"><b>Formatua: </b>Euskarara bikoiztua</p>
+      <p class="text-white text-xl my-4"><b>Denboraldiak: </b>1</p>
+      <p class="text-white text-xl my-4"><b>Kapituluak: </b>51/52</p>
+      <p class="text-white text-xl my-4"><b>Generoa: </b>Fantasia, Komedia, Abentura</p>
+      <p class="text-white text-xl my-4"><b>Zuzendaria: </b>Kunihiko Yuyama, Masamitsu Hidaka</p>
+      <p class="text-white text-xl my-4"><b>Gidoia: </b>Atsuhiro Tomioka, Hideki Sonoda, Yukiyoshi Ôhashi, Junki Takegami, Shinzo Fujita, Shoji Yonemura, Takeshi Shudo</p>
+      <p class="text-white text-xl my-4"><b>Musika: </b>Shinji Miyazaki</p>
+      <p class="text-white text-xl my-4"><b>Ekoizleak: </b>SoftX, Shogakukan-Shueisha Productions, Nintendo, Oriental Light and Magic (OLM), TOEI Animation</p>
+      <p class="text-white text-xl my-4 rounded-xl bg-red-400 p-4 inline-block hover:bg-red-700"><a href="https://www.euskal-encodings.eus/index.php?topic=6563.0" target="_blank">Ikusi hemen!</a></p>
+    </div>
+  </div>
+  <div class="bg-gray-100 bg-opacity-20 rounded-xl flex items-stretch shadow-xl my-4 w-full">
+    <div class="flex-shrink-0 flex items-center">
+      <a href="https://www.euskal-encodings.eus/index.php?topic=5000.0" target="_blank"><img src="origins.png" class="m-6 rounded-xl" style="height: 500px;"></a>
+    </div>
+    <div class="w-1 bg-gray-100 bg-opacity-20 height-auto my-auto rounded-xl" style="height: 500px;"></div>
+    <div class="flex-1 p-6 h-full">
+      <p class="text-white text-4xl p-2 text-center">Pokemon: hastapenak</p>
+      <p class="text-white text-xl my-4">Redek bere partida hasi berri du Pokémon Munduan barna. Okido Irakasleak emandako Pokédexa osatzea du helburu. Bidaia horretan Pokémonen laguntza izango du, eta hainbat erronkari egin beharko dio aurre.</p>
+      <p class="text-white text-xl my-4"><b>Formatua: </b>Euskarara azpititulatua</p>
+      <p class="text-white text-xl my-4"><b>Denboraldiak: </b>1</p>
+      <p class="text-white text-xl my-4"><b>Kapituluak: </b>4/4</p>
+      <p class="text-white text-xl my-4"><b>Generoa: </b>Fantasia, Abentura</p>
+      <p class="text-white text-xl my-4"><b>Zuzendaria: </b>Itsuro Kawasaki, Yukio Kuroda, Hideya Takahashi, Daiki Tomiyasu</p>
+      <p class="text-white text-xl my-4"><b>Gidoia: </b>Mitsutaka Hirota, Bideo-jokoa: Ken Sugimori, Bideo-jokoa: Satoshi Tajiri</p>
+      <p class="text-white text-xl my-4"><b>Ekoizleak: </b>Oriental Light and Magic (OLM), Xebec, Production I.G</p>
+      <p class="text-white text-xl my-4 rounded-xl bg-red-400 p-4 inline-block hover:bg-red-700"><a href="https://www.euskal-encodings.eus/index.php?topic=5000.0" target="_blank">Ikusi hemen!</a></p>
+    </div>
+  </div>
+  
+  <script>
+    const btn = document.getElementById("backToTop");
+    btn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
