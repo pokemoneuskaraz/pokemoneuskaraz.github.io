@@ -96,10 +96,9 @@
 
       document.querySelectorAll("#dataTable tr").forEach(row => {
       row.addEventListener("click", () => {
-        const rowText = row.cells[3].textContent.toLowerCase();
-        console.log(rowText);
+        const selectedId = row.cells[1].textContent.toLowerCase();
         // Store it in sessionStorage
-        sessionStorage.setItem("selectedPokemon", rowText);
+        sessionStorage.setItem("selectedPokemonId", selectedId);
         // Navigate to page2
         window.location.href = "pokedex_entry.html";
       });

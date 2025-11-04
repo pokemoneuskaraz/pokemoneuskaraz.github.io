@@ -1,14 +1,14 @@
 showApiInformation();
 async function showApiInformation(){
     // First get the pokeapi data given a name
-    var pokemonName = sessionStorage.getItem("selectedPokemon");
-    var pokemonUrl = `https://pokeapi.co/api/v2/pokemon/${pokemonName}`
+    var pokemonId = sessionStorage.getItem("selectedPokemonId");
+    var pokemonUrl = `https://pokeapi.co/api/v2/pokemon/${pokemonId}`
     var response = await fetch(pokemonUrl);
     var pokemonJson = await response.json();
     console.log(pokemonJson);
 
     // Set english name
-    const nameEnglish = document.getElementById("nameEnglish").innerHTML = pokemonName.replace(/^./, str => str.toUpperCase());
+    const nameEnglish = document.getElementById("nameEnglish").innerHTML = pokemonJson.name.replace(/^./, str => str.toUpperCase());
 
     // Set weight and height
     var weight = pokemonJson.weight;
@@ -28,7 +28,7 @@ async function showApiInformation(){
         let basqueName = data[id-1][1];
         
         for (let row of data) {
-            if (row[2] && row[2].toString().toLowerCase() === pokemonName.toLowerCase()) {
+            if (row[0] && row[0].toString().toLowerCase() === id.toString().toLowerCase()) {
                 const nameBasque = document.getElementById("nameBasque").innerHTML = row[1].replace(/^./, str => str.toUpperCase());
                 break;
             }
@@ -84,7 +84,8 @@ async function showApiInformation(){
     var image = pokemonJson.sprites.other['official-artwork'].front_default;
     const mainImage = document.getElementById("mainImage");
     mainImage.src = image;
-
+    mainImage.classList.remove('opacity-0', 'scale-0');
+    
     // Set cry
     var cry = pokemonJson.cries.latest;
     const audioSource = document.getElementById("pokemonAudioSource");
