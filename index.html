@@ -13,7 +13,7 @@ body {
   background-size: 80px;
 }
 </style>
-<body class="items-center justify-start h-screen min-h-screen">
+<body class="items-center justify-start">
     <div class="flex-1 flex items-center justify-center">
         <a href="index.html"><img class="" src="pokemon_titulua.png"></a>
     </div>
@@ -25,47 +25,35 @@ body {
         <li><a class="h-20 flex items-center text-white text-xl rounded-xl p-4 hover:bg-red-400" style="height: 80px" href="telesailak.html">Euskarazko Telesailak</a></li>
     </ul>
     <!-- <p class="text-right">Titulua <a href="https://www.textstudio.com/">texStudion</a> sortu da</p> -->
-    <div id="main" class="flex w-full">
-        <div id="leftbar" class=" fixed w-[20%] bg-gray-100 bg-opacity-20 p-6 rounded-xl my-4">
-            <div class="grid grid-cols-2">
-                <div class="bg-gray-100 bg-opacity-20 rounded-xl p-6 m-4" id="pokedex">
-                    <a href="pokedex_main.html">
-                        <div class="flex-1 flex items-center justify-center">
-                            <img class="p-6" src="pokedex.webp">
-                        </div>
-                        <p class="text-2xl text-white text-center">Euskarazko Pokédexa</p>
-                    </a>
+    <div id="main" class="w-full overflow-y-auto scroll-smooth">
+        <div class="m-6 p-6 bg-white bg-opacity-20 rounded-xl border border-red-400">
+        <p class="text-4xl text-white text-center">Kaixo! Webgune honetan orain arte Pokémon frankiziaren inguruan euskaraz egin den guztia biltzen da.</p>
+        <p class="text-4xl text-white text-center">Oraingoz, Pokémon euskaraz jolasterik ez dago, nahiz eta Pokémon Esmeralda, Escarlata eta Rojo Fuegoren itzulpenak bidean egon.</p>
+        <p class="text-4xl text-white text-center">Bitartean, euskarazko Pokédexa kontsulta dezakezu, edo Pokémoneko terminoen Euskarazko hiztegia.</p>
+        </div>
+        <div class="m-6 p-6 bg-white bg-opacity-20 rounded-xl border border-blue-400">
+            <a href="pokedex_main.html">
+                <p class="text-2xl text-white text-center">Euskarazko Pokédexa</p>
+                <div class="grid grid-cols-1 items-center justify-center rounded-xl overflow-hidden">
+                    <img class="m-4 rounded-xl shadow-xl object-cover transition-transform duration-500 ease-in-out hover:scale-110" style="height: 500px;" src="pokedex.png">
                 </div>
-                <div class="bg-gray-100 bg-opacity-20 rounded-xl p-6 m-4" id="hiztegia">
-                    <a href="terminoen_hiztegia.html">
-                        <div class="flex-1 flex items-center justify-center">
-                            <img class="p-6" src="hiztegia.webp">
-                        </div>
-                        <p class="text-2xl text-white text-center">Terminoen Hiztegia</p>
-                    </a>
-                </div>
-                    <a href="telesailak.html">
-                        <div class="grid grid-cols-1 items-center justify-center rounded-xl overflow-hidden">
-                            <img class="rounded-xl shadow-xl object-cover transition-transform duration-500 ease-in-out hover:scale-110" src="serie.jpeg">
-                        </div>
-                        <p class="text-2xl text-white text-center">Telesaila</p>
-                    </a>
-                
-                <div class="bg-gray-100 bg-opacity-20 rounded-xl p-6 m-4" id="hiztegia">
-                    <a href="terminoen_hiztegia.html">
-                        <div class="flex-1 flex items-center justify-center">
-                            <img class="rounded-xl" src="hiztegia.webp">
-                        </div>
-                        <p class="text-2xl text-white text-center">Terminoen Hiztegia</p>
-                    </a>
-                </div>
+            </a>
+        </div>
+        <div class="m-6 p-6 bg-white bg-opacity-20 rounded-xl border border-yellow-400">
+        <a href="terminoen_hiztegia.html">
+            <p class="text-2xl text-white text-center">Terminoen Hiztegia</p>
+            <div class="grid grid-cols-1 items-center justify-center rounded-xl overflow-hidden">
+                <img class="m-4 rounded-xl shadow-xl object-cover transition-transform duration-500 ease-in-out hover:scale-110" style="height: 500px;" src="hiztegia.png">
             </div>
+        </a>
         </div>
-        <div class="fixed w-[80%] left-[20%] p-6 h-screen overflow-y-auto">
-            <p class="text-4xl text-white text-center">Kaixo! Webgune honetan orain arte Pokémon frankiziaren inguruan euskaraz egin den guztia biltzen da.</p>
-            <p class="text-4xl text-white text-center">Oraingoz, Pokémon euskaraz jolasterik ez dago, nahiz eta Pokémon Esmeralda, Escarlata eta Rojo Fuegoren itzulpenak bidean egon.</p>
-            <p class="text-4xl text-white text-center">Bitartean, euskarazko Pokédexa kontsulta dezakezu, edo Pokémoneko terminoen Euskarazko hiztegia.</p>
+        <div class="m-6 p-6 bg-white bg-opacity-20 rounded-xl border border-orange-400">
+        <a href="telesailak.html">
+            <p class="text-2xl text-white text-center">Telesaila</p>
+            <div class="grid grid-cols-1 items-center justify-center rounded-xl overflow-hidden">
+                <img class="m-4 rounded-xl shadow-xl object-cover transition-transform duration-500 ease-in-out hover:scale-110" style="height: 500px;" src="serie.jpeg">
+            </div>
+        </a>
         </div>
-    </div>
-    
+    </div> 
 </body>

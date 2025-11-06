@@ -5,8 +5,12 @@ async function showApiInformation(){
     var pokemonUrl = `https://pokeapi.co/api/v2/pokemon/${pokemonId}`
     var response = await fetch(pokemonUrl);
     var pokemonJson = await response.json();
+    // Get extra information from the pokemon-species api
+    var pokemonSpeciesUrl = `https://pokeapi.co/api/v2/pokemon-species/${pokemonId}`
+    var responseSpecies = await fetch(pokemonSpeciesUrl);
+    var pokemonSpeciesJson = await responseSpecies.json();
+    console.log(pokemonSpeciesJson);
     console.log(pokemonJson);
-
     // Set english name
     const nameEnglish = document.getElementById("nameEnglish").innerHTML = pokemonJson.name.replace(/^./, str => str.toUpperCase());
 
@@ -23,7 +27,6 @@ async function showApiInformation(){
         const workbook = XLSX.read(buffer, { type: 'array' });
         const sheet = workbook.Sheets["izenak"];
         const data = XLSX.utils.sheet_to_json(sheet, { header: 1 });
-        
         var id = pokemonJson.id;
         let basqueName = data[id-1][1];
         
@@ -33,6 +36,75 @@ async function showApiInformation(){
                 break;
             }
         }
+
+        const sheetColors = workbook.Sheets["koloreak"];
+        const dataColors = XLSX.utils.sheet_to_json(sheetColors, { header: 1 });
+        var colorEnglish = pokemonSpeciesJson.color.name;
+        var colorBasque = "";
+        for (let row of dataColors) {
+            if (row[0] && row[0].toString().toLowerCase() === colorEnglish.toLowerCase()) {
+                colorBasque = row[1].replace(/^./, str => str.toUpperCase());
+                break;
+            }
+        }
+        // Set color
+        const colorVal = document.getElementById("colorVal").innerHTML = colorBasque;
+
+        const sheetShapes = workbook.Sheets["formak"];
+        const dataShapes = XLSX.utils.sheet_to_json(sheetShapes, { header: 1 });
+        var shapeEnglish = pokemonSpeciesJson.shape.name;
+        var shapeBasque = "";
+        for (let row of dataShapes) {
+            if (row[0] && row[0].toString().toLowerCase() === shapeEnglish.toLowerCase()) {
+                shapeBasque = row[1].replace(/^./, str => str.toUpperCase());
+                break;
+            }
+        }
+
+        // Set shape
+        const shapeVal = document.getElementById("shapeVal").innerHTML = shapeBasque;
+
+        // Set abilities
+        var commonAbilities = [];
+        var hiddenAbilities = [];
+        pokemonJson.abilities.forEach(ability => {
+            if(ability.is_hidden == false){
+                commonAbilities.push(ability.ability.name);
+            } else {
+                hiddenAbilities.push(ability.ability.name);
+            }
+        });
+        const abilityVal = document.getElementById("abilityVal").innerHTML = commonAbilities.toString();
+        const hiddenAbilityVal = document.getElementById("hiddenAbilityVal").innerHTML = hiddenAbilities.toString();
+
+        // Set egg groups
+        var eggGroupsEnglish = [];
+        pokemonSpeciesJson.egg_groups.forEach(eggGroup => {
+            eggGroupsEnglish.push(eggGroup.name);
+        });
+
+        const sheetEggGroups = workbook.Sheets["arrautzaTaldeak"];
+        const dataEggGroups = XLSX.utils.sheet_to_json(sheetEggGroups, { header: 1 });
+        var eggGroupsBasque = [];
+        eggGroupsEnglish.forEach(eggGroupEnglish => {
+            for (let row of dataEggGroups) {
+                if (row[0] && row[0].toString().toLowerCase() === eggGroupEnglish.toLowerCase()) {
+                    eggGroupsBasque.push(row[1].replace(/^./, str => str.toUpperCase()));
+                    break;
+                }
+            }
+        });
+        
+        const eggGroupVal = document.getElementById("eggGroupVal").innerHTML = eggGroupsBasque.toString();
+
+        // set etimology
+        const sheetEtimology = workbook.Sheets["etimologiak"];
+        const dataEtimology = XLSX.utils.sheet_to_json(sheetEtimology, { header: 1 });
+        const etimologia = String(dataEtimology?.[id - 1]?.[1] ?? "Zehaztu gabe");
+        const etimologyVal = document.getElementById("etimologyVal").innerHTML = etimologia;
+
+        // set generation
+        const generationVal = document.getElementById("generationVal").innerHTML = pokemonSpeciesJson.generation.name.split("-")[1].toUpperCase() + ". Belaunaldia";
 
         // Set ID, previous, next pokemon
         const pokemonId = document.getElementById("pokemonId").innerHTML = id;
@@ -66,20 +138,26 @@ async function showApiInformation(){
         const typesComponent = document.getElementById("types");
         if(typesBasque.length > 1){
             typesComponent.classList.add("grid-cols-2")
-            typesComponent.innerHTML = `<span class="flex-1 flex items-center justify-center ${types[0]}"><img src="type_icons/${types[0]}.png" width=38><h3 class="text-xl px-2 py-1 text-center text-white">${typesBasque[0]}a</h3></span>`
-            typesComponent.innerHTML += `<span class="flex-1 flex items-center justify-center rounded-r-xl ${types[1]}"><img src="type_icons/${types[1]}.png" width=38><h3 class="text-xl px-2 py-1 text-center text-white ${types[1]}">${typesBasque[1]}a</h3></span>`
+            typesComponent.innerHTML = `<span class="flex-1 flex items-center justify-center ${types[0]}"><img src="type_icons/${types[0]}.png" width=38><h3 class="text-xl px-2 py-1 text-center text-white">${typesBasque[0]}</h3></span>`
+            typesComponent.innerHTML += `<span class="flex-1 flex items-center justify-center rounded-r-xl ${types[1]}"><img src="type_icons/${types[1]}.png" width=38><h3 class="text-xl px-2 py-1 text-center text-white">${typesBasque[1]}</h3></span>`
         } else {
-            typesComponent.innerHTML = `<span class="flex-1 flex items-center justify-center rounded-r-xl ${types[0]}"><img src="type_icons/${types[0]}.png" width=38><h3 class="text-xl px-2 py-1 text-center text-white ${types[0]}">${typesBasque[0]}a</h3></span>`
+            typesComponent.innerHTML = `<span class="flex-1 flex items-center justify-center rounded-r-xl ${types[0]}"><img src="type_icons/${types[0]}.png" width=38><h3 class="text-xl px-2 py-1 text-center text-white">${typesBasque[0]}</h3></span>`
         }
     });
-
-    // Set abilities TODO
-    var abilities = pokemonJson.abilities;
 
     // Set stats
     var stats = pokemonJson.stats.map(item=>item.base_stat);
     calculateAllStats(stats);
-    
+
+    // Set shape
+    var shape = pokemonSpeciesJson.shape.name;
+    const shapeVal = document.getElementById("shapeVal").innerHTML = shape;
+
+    // Set gender
+    var genderRate = pokemonSpeciesJson.gender_rate;
+    var gender = calculateGenderText(genderRate);
+    const genderVal = document.getElementById("genderVal").innerHTML = gender;
+
     // Set image
     var image = pokemonJson.sprites.other['official-artwork'].front_default;
     const mainImage = document.getElementById("mainImage");
@@ -168,6 +246,15 @@ function calculateAllStats(baseStats) {
             statCounter++;
         }
     }
+}
+
+function calculateGenderText(genderRate){
+    if(genderRate == -1){
+        return "Generorik ez"
+    }
+    var arra = (8 - genderRate) * 12.5;
+    var emea = genderRate * 12.5;
+    return `Arra: %${arra} / Emea: %${emea}`
 }
 
 function setToggles(){
