@@ -110,16 +110,20 @@ async function showApiInformation(){
         const pokemonId = document.getElementById("pokemonId").innerHTML = id;
         if(id > 1){
             let prevBasqueName = data[id-2][1];
-            const prevPokemonId = document.getElementById("prevPokemonId").innerHTML = `< ${prevBasqueName}`;
+            let prevEnglishName = data[id-2][2];
+            const prevPokemonId = document.getElementById("prevPokemonId").innerHTML = `< ${prevBasqueName} <img id="prevImage" src = "pokemon_icons/${prevEnglishName.toLowerCase()}.png">`;
         } else {
             const prevPokemonId = document.getElementById("prevPokemonId").innerHTML = "";
         }
         if(id < 649){ // Genesect
             let nextBasqueName = data[id][1];
-            const nextPokemonId = document.getElementById("nextPokemonId").innerHTML = `${nextBasqueName} >`;
+            let nextEnglishName = data[id][2];
+            const nextPokemonId = document.getElementById("nextPokemonId").innerHTML = `<img id="nextImage" src = "pokemon_icons/${nextEnglishName.toLowerCase()}.png"> ${nextBasqueName} >`;
         } else {
             const nextPokemonId = document.getElementById("nextPokemonId").innerHTML = "";
         }
+        // Set window title
+        document.title = `EusPdéx: ${basqueName}`
     });
     
     // set typing

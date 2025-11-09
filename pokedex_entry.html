@@ -2,7 +2,7 @@
 <html lang="en" class="bg-gray-800">
 <head>
   <meta charset="UTF-8" />
-  <title>Pokémon Jokoetako Terminoen Itzulpenak</title>
+  <title>Euskal Pokédexa:</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
   <script src="pokedex_entry.js"></script>
@@ -15,9 +15,9 @@
         <h1 id="nameBasque" class="text-center text-4xl px-6 py-6 bg-red-400 font-bold rounded-tr-xl text-white" id="name">Izena eusk</h1>
         <h3 id="nameEnglish" class="text-center text-xl px-3 py-3 font-bold rounded-xl text-white">Ditto</h3>
         <div class="grid grid-cols-3">
-        <a href=""><h3 id="prevPokemonId" class="hover:bg-red-400 text-center text-xl px-3 py-3 font-bold rounded-xl text-white"> < XXX Aurrekoa</h3></a>
+        <a href=""><h3 id="prevPokemonId" class="hover:bg-red-400 text-center text-xl px-3 py-3 font-bold rounded-xl text-white"> < XXX Aurrekoa <img id="prevImage"></h3></a>
         <h3 id="pokemonId" class="text-center text-xl px-3 py-3 font-bold rounded-xl text-white">XXX</h3>
-        <a href=""><h3 id="nextPokemonId" class="hover:bg-red-400 text-center text-xl px-3 py-3 font-bold rounded-xl text-white"> XXX Hurrengoa ></h3></a>
+        <a href=""><h3 id="nextPokemonId" class="hover:bg-red-400 text-center text-xl px-3 py-3 font-bold rounded-xl text-white"><img id="nextImage"> XXX Hurrengoa ></h3></a>
         </div>
         <div class="flex-1 flex items-center justify-center">
             <img id="mainImage" class="object-contain opacity-0 scale-0 transition-all duration-700 ease-out" src="hutsa.png" alt="Ezin izan da irudia kargatu">
