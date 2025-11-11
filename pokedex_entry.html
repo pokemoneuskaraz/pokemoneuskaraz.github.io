@@ -8,16 +8,15 @@
   <script src="pokedex_entry.js"></script>
   <link rel="stylesheet" href="main.css">
 </head>
-<script src="pokedex_entry.js"></script>
 <body class="items-center justify-start min-h-screen py-12 px-4">
 
     <div id="txartela" class="fixed top-4 bottom-4 left-0 w-[30%] bg-gray-400 bg-opacity-20 shadow-xl rounded-r-xl flex flex-col overflow-y-auto">
         <h1 id="nameBasque" class="text-center text-4xl px-6 py-6 bg-red-400 font-bold rounded-tr-xl text-white" id="name">Izena eusk</h1>
         <h3 id="nameEnglish" class="text-center text-xl px-3 py-3 font-bold rounded-xl text-white">Ditto</h3>
         <div class="grid grid-cols-3">
-        <a href=""><h3 id="prevPokemonId" class="hover:bg-red-400 text-center text-xl px-3 py-3 font-bold rounded-xl text-white"> < XXX Aurrekoa <img id="prevImage"></h3></a>
+        <a href=""><h3 id="prevPokemonId" class="flex items-center hover:bg-red-400 text-center text-xl px-3 py-3 font-bold rounded-xl text-white"> < XXX Aurrekoa <img id="prevImage"></h3></a>
         <h3 id="pokemonId" class="text-center text-xl px-3 py-3 font-bold rounded-xl text-white">XXX</h3>
-        <a href=""><h3 id="nextPokemonId" class="hover:bg-red-400 text-center text-xl px-3 py-3 font-bold rounded-xl text-white"><img id="nextImage"> XXX Hurrengoa ></h3></a>
+        <a href=""><h3 id="nextPokemonId" class="flex items-center hover:bg-red-400 text-center text-xl px-3 py-3 font-bold rounded-xl text-white"><img id="nextImage"> XXX Hurrengoa ></h3></a>
         </div>
         <div class="flex-1 flex items-center justify-center">
             <img id="mainImage" class="object-contain opacity-0 scale-0 transition-all duration-700 ease-out" src="hutsa.png" alt="Ezin izan da irudia kargatu">
@@ -148,34 +147,34 @@
         <div id="deskribapena" class="p-4">
             <h3 class="text-4xl text-white my-4 px-6 py-6 rounded-xl bg-gray-100 bg-opacity-20 flex">Deskribapenak <button id="toggleDeskribapenak" class="ml-2 py-2 px-4 text-sm rounded-lg bg-gray-100 bg-opacity-20 text-white hover:bg-gray-400"> ⌃ Ezkutatu </button></h3>
             <span id="deskribapenakContent">
-                <div class="grid grid-cols-[200px_50px_1fr] bg-opacity-80 rounded-xl my-2 red">
+                <div class="items-center grid grid-cols-[200px_50px_1fr] bg-opacity-80 rounded-xl my-2 red">
                     <h3 class="grid items-center text-xl px-2 py-1 text-center text-white">Gorria</h3>
-                    <img class="object-contain" src="pokemon_icons/charizard.png" alt="Ezin izan da irudia kargatu">
+                    <img class="object-contain" src="pokemon_icons_big/charizard.png" alt="Ezin izan da irudia kargatu">
                     <h3 class="text-xl px-2 py-1 text-white">Kupik bere zelulen egitura berrantolatzen du beste forma batzuk hartzeko. Baina memorian gordeta dituen datuetatik abiatuz zerbait bihurtzen saiatzen denez gero, xehetasun batzuek ihes egiten diote.</h3>
                 </div>
-                <div class="grid grid-cols-[200px_50px_1fr] bg-opacity-80 rounded-xl my-2 blue">
+                <div class="items-center grid grid-cols-[200px_50px_1fr] bg-opacity-80 rounded-xl my-2 blue">
                     <h3 class="grid items-center text-xl px-2 py-1 text-center text-white">Urdina</h3>
-                    <img class="object-contain" src="pokemon_icons/blastoise.png" alt="Ezin izan da irudia kargatu">
+                    <img class="object-contain" src="pokemon_icons_big/blastoise.png" alt="Ezin izan da irudia kargatu">
                     <h3 class="text-xl px-2 py-1 text-white">Kupik bere zelulen egitura berrantolatzen du beste forma batzuk hartzeko. Baina memorian gordeta dituen datuetatik abiatuz zerbait bihurtzen saiatzen denez gero, xehetasun batzuek ihes egiten diote.</h3>
                 </div>
-                <div class="grid grid-cols-[200px_50px_1fr] bg-opacity-80 rounded-xl my-2 yellow">
+                <div class="items-center grid grid-cols-[200px_50px_1fr] bg-opacity-80 rounded-xl my-2 yellow">
                     <h3 class="grid items-center text-xl px-2 py-1 text-center text-white">Horia</h3>
-                    <img class="object-contain" src="pokemon_icons/pikachu.png" alt="Ezin izan da irudia kargatu">
+                    <img class="object-contain" src="pokemon_icons_big/pikachu.png" alt="Ezin izan da irudia kargatu">
                     <h3 class="text-xl px-2 py-1 text-white">Kupik bere zelulen egitura berrantolatzen du beste forma batzuk hartzeko. Baina memorian gordeta dituen datuetatik abiatuz zerbait bihurtzen saiatzen denez gero, xehetasun batzuek ihes egiten diote.</h3>
                 </div>
-                <div class="grid grid-cols-[200px_50px_1fr] bg-opacity-80 rounded-xl my-2 gold">
+                <div class="items-center grid grid-cols-[200px_50px_1fr] bg-opacity-80 rounded-xl my-2 gold">
                     <h3 class="grid items-center text-xl px-2 py-1 text-center text-white">Urrea</h3>
-                    <img class="object-contain" src="pokemon_icons/ho-oh.png" alt="Ezin izan da irudia kargatu">
+                    <img class="object-contain" src="pokemon_icons_big/ho-oh.png" alt="Ezin izan da irudia kargatu">
                     <h3 class="text-xl px-2 py-1 text-white">Kupik bere zelulen egitura berrantolatzen du beste forma batzuk hartzeko. Baina memorian gordeta dituen datuetatik abiatuz zerbait bihurtzen saiatzen denez gero, xehetasun batzuek ihes egiten diote.</h3>
                 </div>
-                <div class="grid grid-cols-[200px_50px_1fr] bg-opacity-80 rounded-xl my-2 silver">
+                <div class="items-center grid grid-cols-[200px_50px_1fr] bg-opacity-80 rounded-xl my-2 silver">
                     <h3 class="grid items-center text-xl px-2 py-1 text-center text-white">Zilarra</h3>
-                    <img class="object-contain" src="pokemon_icons/lugia.png" alt="Ezin izan da irudia kargatu">
+                    <img class="object-contain" src="pokemon_icons_big/lugia.png" alt="Ezin izan da irudia kargatu">
                     <h3 class="text-xl px-2 py-1 text-white">Kupik bere zelulen egitura berrantolatzen du beste forma batzuk hartzeko. Baina memorian gordeta dituen datuetatik abiatuz zerbait bihurtzen saiatzen denez gero, xehetasun batzuek ihes egiten diote.</h3>
                 </div>
-                <div class="grid grid-cols-[200px_50px_1fr] bg-opacity-80 rounded-xl my-2 crystal">
+                <div class="items-center grid grid-cols-[200px_50px_1fr] bg-opacity-80 rounded-xl my-2 crystal">
                     <h3 class="grid items-center text-xl px-2 py-1 text-center text-white">Kristala</h3>
-                    <img class="object-contain" src="pokemon_icons/suicune.png" alt="Ezin izan da irudia kargatu">
+                    <img class="object-contain" src="pokemon_icons_big/suicune.png" alt="Ezin izan da irudia kargatu">
                     <h3 class="text-xl px-2 py-1 text-white">Kupik bere zelulen egitura berrantolatzen du beste forma batzuk hartzeko. Baina memorian gordeta dituen datuetatik abiatuz zerbait bihurtzen saiatzen denez gero, xehetasun batzuek ihes egiten diote.</h3>
                 </div>
             </span>

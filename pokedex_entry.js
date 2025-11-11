@@ -198,7 +198,7 @@ async function showApiInformation(){
 
             if(front_default) gameIcons.appendChild(createImgBlock(front_default, "Aurretik"));
             if(back_default) gameIcons.appendChild(createImgBlock(back_default, "Atzetik"));
-            if (front_shiny) gameIcons.appendChild(createImgBlock(front_shiny, "Aurretik (shiny)"));
+            if(front_shiny) gameIcons.appendChild(createImgBlock(front_shiny, "Aurretik (shiny)"));
             if(back_shiny) gameIcons.appendChild(createImgBlock(back_shiny, "Atzetik (shiny)"));
             
             gameBlock.appendChild(gameIcons);
