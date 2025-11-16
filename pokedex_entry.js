@@ -19,13 +19,16 @@ async function showApiInformation(){
     var height = pokemonJson.height;
     const weightVal = document.getElementById("weightVal").innerHTML = weight/10 + " kg";
     const heightVal = document.getElementById("heightVal").innerHTML = height/10 + " m";
-
+    var workbookPokedex = null;
+    var workbookTranslations = null;
+    var movesPerGame = null;
+    const gameNamesBasque = {};
     // Set basque name
     fetch('pokedex.ods')
     .then(res => res.arrayBuffer())
     .then(buffer => {
-        const workbook = XLSX.read(buffer, { type: 'array' });
-        const sheet = workbook.Sheets["izenak"];
+        workbookPokedex = XLSX.read(buffer, { type: 'array' });
+        const sheet = workbookPokedex.Sheets["izenak"];
         const data = XLSX.utils.sheet_to_json(sheet, { header: 1 });
         var id = pokemonJson.id;
         let basqueName = data[id-1][1];
@@ -37,7 +40,7 @@ async function showApiInformation(){
             }
         }
 
-        const sheetColors = workbook.Sheets["koloreak"];
+        const sheetColors = workbookPokedex.Sheets["koloreak"];
         const dataColors = XLSX.utils.sheet_to_json(sheetColors, { header: 1 });
         var colorEnglish = pokemonSpeciesJson.color.name;
         var colorBasque = "";
@@ -50,7 +53,7 @@ async function showApiInformation(){
         // Set color
         const colorVal = document.getElementById("colorVal").innerHTML = colorBasque;
 
-        const sheetShapes = workbook.Sheets["formak"];
+        const sheetShapes = workbookPokedex.Sheets["formak"];
         const dataShapes = XLSX.utils.sheet_to_json(sheetShapes, { header: 1 });
         var shapeEnglish = pokemonSpeciesJson.shape.name;
         var shapeBasque = "";
@@ -83,7 +86,7 @@ async function showApiInformation(){
             eggGroupsEnglish.push(eggGroup.name);
         });
 
-        const sheetEggGroups = workbook.Sheets["arrautzaTaldeak"];
+        const sheetEggGroups = workbookPokedex.Sheets["arrautzaTaldeak"];
         const dataEggGroups = XLSX.utils.sheet_to_json(sheetEggGroups, { header: 1 });
         var eggGroupsBasque = [];
         eggGroupsEnglish.forEach(eggGroupEnglish => {
@@ -98,7 +101,7 @@ async function showApiInformation(){
         const eggGroupVal = document.getElementById("eggGroupVal").innerHTML = eggGroupsBasque.toString();
 
         // set etimology
-        const sheetEtimology = workbook.Sheets["etimologiak"];
+        const sheetEtimology = workbookPokedex.Sheets["etimologiak"];
         const dataEtimology = XLSX.utils.sheet_to_json(sheetEtimology, { header: 1 });
         const etimologia = String(dataEtimology?.[id - 1]?.[1] ?? "Zehaztu gabe");
         const etimologyVal = document.getElementById("etimologyVal").innerHTML = etimologia;
@@ -122,8 +125,44 @@ async function showApiInformation(){
         } else {
             const nextPokemonId = document.getElementById("nextPokemonId").innerHTML = "";
         }
+
+        // Set moves
+        movesPerGame = parsePokemonMoves(pokemonJson);
+        
         // Set window title
         document.title = `EusPdéx: ${basqueName}`
+
+        // Set images
+    var images = pokemonJson.sprites.versions;
+    var genIndex = 1;
+    Object.entries(images).forEach(([generation, games]) => {
+        const htmlElement = document.getElementById(`iconGen${genIndex}`);
+        Object.entries(games).forEach(([game, sprite]) => {
+            var front_default = sprite.front_default ? sprite.front_default : false;
+            var back_default = sprite.back_default ? sprite.back_default : false;
+            var front_shiny = sprite.front_shiny ? sprite.front_shiny : false;
+            var back_shiny = sprite.back_shiny ? sprite.back_shiny : false;
+            const gameBlock = document.createElement("div");
+            gameBlock.className = "grid grid-cols-1 py-2 px-4 m-4 rounded-xl bg-opacity-20 bg-gray-200";
+
+            const gameTitle = document.createElement("p");
+            gameTitle.className = "text-white text-sm p-2 text-center text-xl"
+            gameTitle.textContent = gameNamesBasque[game];
+            gameBlock.appendChild(gameTitle);
+
+            const gameIcons = document.createElement("div");
+            gameIcons.className = "flex";
+
+            if(front_default) gameIcons.appendChild(createImgBlock(front_default, "Aurretik"));
+            if(back_default) gameIcons.appendChild(createImgBlock(back_default, "Atzetik"));
+            if(front_shiny) gameIcons.appendChild(createImgBlock(front_shiny, "Aurretik (shiny)"));
+            if(back_shiny) gameIcons.appendChild(createImgBlock(back_shiny, "Atzetik (shiny)"));
+            
+            gameBlock.appendChild(gameIcons);
+            htmlElement.appendChild(gameBlock);
+        });
+        genIndex++;
+    });
     });
     
     // set typing
@@ -131,8 +170,8 @@ async function showApiInformation(){
     fetch('itzulpenak.ods')
     .then(res => res.arrayBuffer())
     .then(buffer => {
-        const workbook = XLSX.read(buffer, { type: 'array' });
-        const sheet = workbook.Sheets["Motak"];
+        workbookTranslations = XLSX.read(buffer, { type: 'array' });
+        const sheet = workbookTranslations.Sheets["Motak"];
         const data = XLSX.utils.sheet_to_json(sheet, { header: 1 });
 
         let typesBasque = types.map(type => {
@@ -175,37 +214,118 @@ async function showApiInformation(){
     audioSource.src = cry;
     audioPlayer.load();
 
-    // Set images
-    var images = pokemonJson.sprites.versions;
-    var genIndex = 1;
-    Object.entries(images).forEach(([generation, games]) => {
-        const htmlElement = document.getElementById(`iconGen${genIndex}`);
-        Object.entries(games).forEach(([game, sprite]) => {
-            var front_default = sprite.front_default ? sprite.front_default : false;
-            var back_default = sprite.back_default ? sprite.back_default : false;
-            var front_shiny = sprite.front_shiny ? sprite.front_shiny : false;
-            var back_shiny = sprite.back_shiny ? sprite.back_shiny : false;
-            const gameBlock = document.createElement("div");
-            gameBlock.className = "grid grid-cols-1 py-2 px-4 m-4 rounded-xl bg-opacity-20 bg-gray-200";
-
-            const gameTitle = document.createElement("p");
-            gameTitle.className = "text-white text-sm p-2 text-center"
-            gameTitle.textContent = game;
-            gameBlock.appendChild(gameTitle);
-
-            const gameIcons = document.createElement("div");
-            gameIcons.className = "flex";
-
-            if(front_default) gameIcons.appendChild(createImgBlock(front_default, "Aurretik"));
-            if(back_default) gameIcons.appendChild(createImgBlock(back_default, "Atzetik"));
-            if(front_shiny) gameIcons.appendChild(createImgBlock(front_shiny, "Aurretik (shiny)"));
-            if(back_shiny) gameIcons.appendChild(createImgBlock(back_shiny, "Atzetik (shiny)"));
-            
-            gameBlock.appendChild(gameIcons);
-            htmlElement.appendChild(gameBlock);
+    function parsePokemonMoves(pokemonJson){
+        var moves = pokemonJson.moves;
+        var movesPerGame = {};
+        moves.forEach(move => {
+            move.version_group_details.forEach(version_det => {
+                var gameName = version_det.version_group.name;
+                if (!movesPerGame[gameName]) {
+                movesPerGame[gameName] = [];
+                }
+                movesPerGame[gameName].push({
+                    name: move.move.name,
+                    details: version_det});
+            });
         });
-        genIndex++;
-    });
+
+        const moveTypes = ["level-up", "machine", "tutor", "egg", "special"];
+        const sheetGameNames = XLSX.utils.sheet_to_json(workbookPokedex.Sheets["jokoak"], { header: 1 });
+        
+        sheetGameNames.forEach(row => {
+            const [internal, display] = row;
+            if (!internal || !display) return;
+            gameNamesBasque[internal] = display;
+            });
+            moveTypes.forEach(moveType => {
+                // Set buttons
+                Object.entries(movesPerGame).forEach(([gameName, moves]) => {
+                    const hasMoveType = moves.some(m =>
+                        m.details.move_learn_method.name === moveType
+                    );
+                    if (!hasMoveType) return;
+                    
+                    var button = document.createElement("button");
+                    button.className = "text-xl rounded-xl bg-gray-100 bg-opacity-20 text-white py-2 px-3 mx-2 hover:bg-red-400";
+                    button.innerHTML = gameNamesBasque[gameName];
+                    button.onclick = () => renderMovesPage(gameName, moveType);
+                    var buttons = document.getElementById(`${moveType}_moves_buttons`);
+                    buttons.appendChild(button);
+                });
+
+                const firstButton = document.getElementById(`${moveType}_moves_buttons`).querySelector("button");
+                if (firstButton) {
+                    setTimeout(() => firstButton.click(), 0);
+                }
+            });
+        return movesPerGame;
+    }
+
+    function getMovesByMethod(gameName, methodName) {
+        const result = [];
+
+        // If the game doesn't exist, return empty
+        if (!movesPerGame[gameName]) {
+            console.log(`name not existent ${gameName}`);
+            return result;
+        }
+
+        const moves = movesPerGame[gameName];
+        const filtered = moves.filter(entry =>
+            entry.details.move_learn_method.name === methodName
+        );
+
+        return filtered.map(entry => ({
+            name: entry.name,
+            level: entry.details.level_learned_at
+        }));
+    }
+
+    function renderMovesPage(gameName, methodName) {
+        const buttons = document.querySelectorAll(`#${methodName}_moves_buttons button`);
+        buttons.forEach(btn => {
+            if (btn.innerText === gameName) {
+                btn.classList.add("bg-red-400");
+                btn.classList.remove("bg-gray-100", "bg-opacity-20");
+            } else {
+                btn.classList.remove("bg-red-400");
+                btn.classList.add("bg-gray-100", "bg-opacity-20");
+            }
+        });
+
+        var moves = getMovesByMethod(gameName, methodName);
+        moves.sort((a, b) => (a.level ?? 0) - (b.level ?? 0));
+        const table = document.getElementById(`${methodName}_moves_table`);
+        if (methodName == "level-up"){
+            table.innerHTML = `
+                <tr>
+                    <th class="px-6 py-3 text-left text-sm text-white text-center font-semibold bg-red-400">Erasoa</th>
+                    <th class="px-6 py-3 text-left text-sm text-white text-center font-semibold bg-red-400">Maila</th>
+                </tr>
+            `;
+        } else {
+            table.innerHTML = `
+                <tr>
+                    <th class="px-6 py-3 text-left text-sm text-white text-center font-semibold bg-red-400">Erasoa</th>
+                </tr>
+            `;
+        }
+        
+        moves.forEach(move => {
+            var tr = document.createElement("tr");
+            var thName = document.createElement("th");
+            thName.className = "p-4 text-white text-center";
+            thName.innerText = move.name;
+            tr.appendChild(thName);
+            if(move.level){
+                 var thLevel = document.createElement("th");
+                thLevel.className = "p-4 text-white text-center";
+                thLevel.innerText = move.level ?? "-";
+                tr.appendChild(thLevel);
+            }
+            table.appendChild(tr);
+        });
+    }
     setToggles();
 }
 
@@ -213,8 +333,9 @@ function createImgBlock(src, text){
     const imageCont = document.createElement("div");
     imageCont.className = "grid grid-cols-1 p-4";
     const frontImg = document.createElement("img");
+    frontImg.style = "height:100px;";
     frontImg.src = src;
-    frontImg.className = "mx-auto";
+    frontImg.className = "mx-auto rounded-xl p-2";
     const frontTitle = document.createElement("p");
     frontTitle.className = "text-sm text-white text-center my-2"
     frontTitle.textContent = text;
