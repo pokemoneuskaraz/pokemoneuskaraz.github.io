@@ -5,79 +5,106 @@
   <title>Euskarazko Pokémonen Joko eta Fangameak</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
-<style>
-body {
-  background-image: url("pokeball_dark.jpeg");
-  background-repeat: repeat;
-  background-size: 80px;
-}
-</style>
+  <link rel="stylesheet" href="main.css">
 <body class="flex flex-col items-center justify-start min-h-screen py-12 px-4">
   
   <ul class="bg-gray-500 rounded-xl flex items-center">
         <li><a href="index.html"><img class="text-white text-xl rounded-xl p-4 hover:bg-red-400" src="pokemon_titulua.png" style="height: 80px; object-fit: contain;"></a></li>
         <li><a class="h-20 flex items-center text-white text-xl rounded-xl p-4 hover:bg-red-400" style="height: 80px" href="pokedex_main.html">Euskarazko Pokédexa</a></li>
         <li><a class="h-20 flex items-center text-white text-xl rounded-xl p-4 hover:bg-red-400" style="height: 80px" href="terminoen_hiztegia.html">Terminoen Hiztegia</a></li>
-        <li><a class="h-20 flex items-center text-white text-xl rounded-xl p-4 hover:bg-red-400" style="height: 80px" href="pokedex_main.html">Jokoak eta Fangameak</a></li>  </ul>
+        <li><a class="h-20 flex items-center text-white text-xl rounded-xl p-4 hover:bg-red-400" style="height: 80px" href="jokoak.html">Jokoak eta Fangameak</a></li>  </ul>
+  <p class="text-white p-6 bg-gray-100 bg-opacity-20 rounded-xl items-stretch shadow-xl my-4 w-full">Atal honetan, <a class="text-red-400" href="#jokoak">Pokémonen jokoen euskarazko bertsioen</a> informazioa eta haietarako estekak aurki ditzakezu alde batetik, baita <a href="#jokoak_jarraibideak">hauek sortzeko jarraibideak</a> ere. Bestalde, existitzen diren <a class="text-red-400" href="#fangameak">fangameen</a> erreferentziak eta <a href="#fangameak_jarraibideak">hauek egiteko beharrezko informazioa</a> biltzen da.</p>
+  <h1 id="jokoak" class="text-4xl font-bold m-6 text-white">Pokémonen Jokoen Itzulpenak</h1>
+  <div class="bg-gray-100 bg-opacity-20 rounded-xl flex items-stretch shadow-xl my-4 w-full">
+    <div class="flex-shrink-0 flex items-center">
+      <a href="" target="_blank"><img src="pokemon_game_icons/pokemon_emerald.jpg" class="m-6 rounded-xl" style="height: 500px;"></a>
+    </div>
+    <div class="w-1 bg-gray-100 bg-opacity-20 height-auto my-auto rounded-xl" style="height: 500px;"></div>
+    <div class="flex-1 p-6 h-full">
+      <p class="text-white text-4xl p-2 text-center">Pokemon: Esmeralda bertsioa</p>
+      <p class="text-white text-xl my-4"><b>Itzultzailea: </b>Eneko Atxa Landa</p>
+      <p class="text-white text-xl my-4"><b>Urtea: </b>2004</p>
+      <p class="text-white text-xl my-4"><b>Kontsola: </b>Game Boy Advance</p>
+      <p class="text-white text-xl my-4"><b>Diseinatzaileak: </b>Junichi Masuda, Ken Sugimori, Shigeru Miyamoto, Satoshi Tajiri</p>
+      <p class="text-white text-xl my-4"><b>Garatzaileak: </b>Game Freak, Creatures Inc.</p>
+      <p class="text-white text-xl my-4"><b>Argitaratzaileak: </b>Nintendo, The Pokémon Company, Nintendo of America Inc.</p>
+      <p class="text-white text-xl my-4 rounded-xl bg-red-400 p-4 inline-block hover:bg-red-700"><a href="" target="_blank">Bukatu gabe</a></p>
+    </div>
+  </div>
+  <div class="bg-gray-100 bg-opacity-20 rounded-xl flex items-stretch shadow-xl my-4 w-full">
+    <div class="flex-shrink-0 flex items-center">
+      <a href="" target="_blank"><img src="pokemon_game_icons/pokemon_firered.jpg" class="m-6 rounded-xl" style="height: 500px;"></a>
+    </div>
+    <div class="w-1 bg-gray-100 bg-opacity-20 height-auto my-auto rounded-xl" style="height: 500px;"></div>
+    <div class="flex-1 p-6 h-full">
+      <p class="text-white text-4xl p-2 text-center">Pokémon: Su Gorri bertsioa</p>
+      <p class="text-white text-xl my-4"><b>Itzultzailea: </b>-</p>
+      <p class="text-white text-xl my-4"><b>Urtea: </b>2004</p>
+      <p class="text-white text-xl my-4"><b>Kontsola: </b>Game Boy Advance</p>
+      <p class="text-white text-xl my-4"><b>Diseinatzaileak: </b>Junichi Masuda, Ken Sugimori, Satoshi Tajiri</p>
+      <p class="text-white text-xl my-4"><b>Garatzaileak: </b>Game Freak</p>
+      <p class="text-white text-xl my-4"><b>Argitaratzaileak: </b>Nintendo</p>
+      <p class="text-white text-xl my-4 rounded-xl bg-red-400 p-4 inline-block hover:bg-red-700"><a href="" target="_blank">Bukatu gabe</a></p>
+    </div>
+  </div>
 
-  <h1 class="text-4xl font-bold m-6 text-white">Pokémon Telesaila</h1>
-  <h1 class="text-xl text-white m-6">Esker bereziak <a class="text-red-400 hover:text-red-700" href="https://www.euskal-encodings.eus/">Euskal Encodingsi</a>, euskarazko ikus-entzunezkoen arloan horrenbeste laguntzeagatik.</h1>
   <div class="bg-gray-100 bg-opacity-20 rounded-xl flex items-stretch shadow-xl my-4 w-full">
     <div class="flex-shrink-0 flex items-center">
-      <a href="https://www.euskal-encodings.eus/index.php?topic=6561.0" target="_blank"><img src="denboraldia1.jpg" class="m-6 rounded-xl" style="height: 500px;"></a>
+      <a href="" target="_blank"><img src="pokemon_game_icons/pokemon_leafgreen.jpg" class="m-6 rounded-xl" style="height: 500px;"></a>
     </div>
     <div class="w-1 bg-gray-100 bg-opacity-20 height-auto my-auto rounded-xl" style="height: 500px;"></div>
     <div class="flex-1 p-6 h-full">
-      <p class="text-white text-4xl p-2 text-center">Pokemon: 1. denboraldia</p>
-      <p class="text-white text-xl my-4">Ash 10 urte bete berri dituen mutikoa da, Paleta herrikoa. 10 urterekin hasten dira bertan haurrak Pokemon abenturan murgiltzen, egunen batean entrenatzaile bikainak izateko asmoz. Ashek ez zuen lortu Bulbasaur, Charmander edo Squirtle oinarrizko Pokemonak eskuratzea, hauen ordez Pikachu izeneko Pokemon elektriko xelebrea eman zioten. Azkenean Ash eta Pikachu lagunak egin eta abentura bila joango dira, Misty eta Brock lagun dituztela.</p>
-      <p class="text-white text-xl my-4"><b>Formatua: </b>Euskarara bikoiztua</p>
-      <p class="text-white text-xl my-4"><b>Denboraldiak: </b>1</p>
-      <p class="text-white text-xl my-4"><b>Kapituluak: </b>51/52</p>
-      <p class="text-white text-xl my-4"><b>Generoa: </b>Fantasia, Komedia, Abentura</p>
-      <p class="text-white text-xl my-4"><b>Zuzendaria: </b>Kunihiko Yuyama, Masamitsu Hidaka</p>
-      <p class="text-white text-xl my-4"><b>Gidoia: </b>Atsuhiro Tomioka, Hideki Sonoda, Yukiyoshi Ôhashi, Junki Takegami, Shinzo Fujita, Shoji Yonemura, Takeshi Shudo</p>
-      <p class="text-white text-xl my-4"><b>Musika: </b>Shinji Miyazaki</p>
-      <p class="text-white text-xl my-4 rounded-xl bg-red-400 p-4 inline-block hover:bg-red-700"><a href="https://www.euskal-encodings.eus/index.php?topic=6561.0" target="_blank">Ikusi hemen!</a></p>
+      <p class="text-white text-4xl p-2 text-center">Pokémon: Hosto Berde bertsioa</p>
+      <p class="text-white text-xl my-4"><b>Itzultzailea: </b>-</p>
+      <p class="text-white text-xl my-4"><b>Urtea: </b>2004</p>
+      <p class="text-white text-xl my-4"><b>Kontsola: </b>Game Boy Advance</p>
+      <p class="text-white text-xl my-4"><b>Diseinatzaileak: </b>Junichi Masuda, Ken Sugimori, Satoshi Tajiri</p>
+      <p class="text-white text-xl my-4"><b>Garatzaileak: </b>Game Freak</p>
+      <p class="text-white text-xl my-4"><b>Argitaratzaileak: </b>Nintendo</p>
+      <p class="text-white text-xl my-4 rounded-xl bg-red-400 p-4 inline-block hover:bg-red-700"><a href="" target="_blank">Bukatu gabe</a></p>
     </div>
   </div>
+
   <div class="bg-gray-100 bg-opacity-20 rounded-xl flex items-stretch shadow-xl my-4 w-full">
     <div class="flex-shrink-0 flex items-center">
-      <a href="https://www.euskal-encodings.eus/index.php?topic=6563.0" target="_blank"><img src="denboraldia5.jpg" class="m-6 rounded-xl" style="height: 500px;"></a>
+      <a href="" target="_blank"><img src="pokemon_game_icons/pokemon_scarletviolet.jpg" class="m-6 rounded-xl" style="height: 500px;"></a>
     </div>
     <div class="w-1 bg-gray-100 bg-opacity-20 height-auto my-auto rounded-xl" style="height: 500px;"></div>
     <div class="flex-1 p-6 h-full">
-      <p class="text-white text-4xl p-2 text-center">Pokemon: 5. denboraldia</p>
-      <p class="text-white text-xl my-4">Pokemon telesailaren 5. denboraldia, 'Pokemon: The Original Series' saileko azkena.</p>
-      <p class="text-white text-xl my-4"><b>Formatua: </b>Euskarara bikoiztua</p>
-      <p class="text-white text-xl my-4"><b>Denboraldiak: </b>1</p>
-      <p class="text-white text-xl my-4"><b>Kapituluak: </b>51/52</p>
-      <p class="text-white text-xl my-4"><b>Generoa: </b>Fantasia, Komedia, Abentura</p>
-      <p class="text-white text-xl my-4"><b>Zuzendaria: </b>Kunihiko Yuyama, Masamitsu Hidaka</p>
-      <p class="text-white text-xl my-4"><b>Gidoia: </b>Atsuhiro Tomioka, Hideki Sonoda, Yukiyoshi Ôhashi, Junki Takegami, Shinzo Fujita, Shoji Yonemura, Takeshi Shudo</p>
-      <p class="text-white text-xl my-4"><b>Musika: </b>Shinji Miyazaki</p>
-      <p class="text-white text-xl my-4"><b>Ekoizleak: </b>SoftX, Shogakukan-Shueisha Productions, Nintendo, Oriental Light and Magic (OLM), TOEI Animation</p>
-      <p class="text-white text-xl my-4 rounded-xl bg-red-400 p-4 inline-block hover:bg-red-700"><a href="https://www.euskal-encodings.eus/index.php?topic=6563.0" target="_blank">Ikusi hemen!</a></p>
+      <p class="text-white text-4xl p-2 text-center">Pokémon: Eskarlata & Purpura bertsioa</p>
+      <p class="text-white text-xl my-4"><b>Itzultzailea: </b>-</p>
+      <p class="text-white text-xl my-4"><b>Urtea: </b>2022</p>
+      <p class="text-white text-xl my-4"><b>Kontsola: </b>Nintendo Switch</p>
+      <p class="text-white text-xl my-4"><b>Diseinatzaileak: </b>Junichi Masuda, Ken Sugimori, Shigeru Ohmori</p>
+      <p class="text-white text-xl my-4"><b>Garatzaileak: </b>Game Freak</p>
+      <p class="text-white text-xl my-4"><b>Argitaratzaileak: </b>Nintendo, The Pokémon Company</p>
+      <p class="text-white text-xl my-4 rounded-xl bg-red-400 p-4 inline-block hover:bg-red-700"><a href="" target="_blank">Bukatu gabe</a></p>
     </div>
   </div>
-  <div class="bg-gray-100 bg-opacity-20 rounded-xl flex items-stretch shadow-xl my-4 w-full">
-    <div class="flex-shrink-0 flex items-center">
-      <a href="https://www.euskal-encodings.eus/index.php?topic=5000.0" target="_blank"><img src="origins.png" class="m-6 rounded-xl" style="height: 500px;"></a>
-    </div>
-    <div class="w-1 bg-gray-100 bg-opacity-20 height-auto my-auto rounded-xl" style="height: 500px;"></div>
-    <div class="flex-1 p-6 h-full">
-      <p class="text-white text-4xl p-2 text-center">Pokemon: hastapenak</p>
-      <p class="text-white text-xl my-4">Redek bere partida hasi berri du Pokémon Munduan barna. Okido Irakasleak emandako Pokédexa osatzea du helburu. Bidaia horretan Pokémonen laguntza izango du, eta hainbat erronkari egin beharko dio aurre.</p>
-      <p class="text-white text-xl my-4"><b>Formatua: </b>Euskarara azpititulatua</p>
-      <p class="text-white text-xl my-4"><b>Denboraldiak: </b>1</p>
-      <p class="text-white text-xl my-4"><b>Kapituluak: </b>4/4</p>
-      <p class="text-white text-xl my-4"><b>Generoa: </b>Fantasia, Abentura</p>
-      <p class="text-white text-xl my-4"><b>Zuzendaria: </b>Itsuro Kawasaki, Yukio Kuroda, Hideya Takahashi, Daiki Tomiyasu</p>
-      <p class="text-white text-xl my-4"><b>Gidoia: </b>Mitsutaka Hirota, Bideo-jokoa: Ken Sugimori, Bideo-jokoa: Satoshi Tajiri</p>
-      <p class="text-white text-xl my-4"><b>Ekoizleak: </b>Oriental Light and Magic (OLM), Xebec, Production I.G</p>
-      <p class="text-white text-xl my-4 rounded-xl bg-red-400 p-4 inline-block hover:bg-red-700"><a href="https://www.euskal-encodings.eus/index.php?topic=5000.0" target="_blank">Ikusi hemen!</a></p>
-    </div>
   </div>
-  
+  <h1 id="fangameak" class="text-4xl font-bold m-6 text-white">Pokémonen Fangameak</h1>
+
+  </div>
+  <h1 id="jokoak_jarraibideak" class="text-4xl font-bold m-6 text-white">Pokémonen Jokoen itzulpenak egiteko jarraibideak</h1>
+  <div class="bg-gray-100 bg-opacity-20 rounded-xl items-stretch shadow-xl my-4 w-full p-6">
+    <h2 class="text-2xl font-bold m-6 text-white">Nondik hasi</h2>
+    <p class="text-white text-xl py-2">Pokémonen jokoen itzulpenak egiteko modua asko aldatzen da itzuli nahi den edizioaren arabera. Hasierako belaunaldietako jokoen kodea
+      publikoa da, <a class="text-red-400 hover:text-red-700" href="https://github.com/orgs/pret/repositories" target="_blank">pret erabiltzailearen Githubeko profilean</a> aurki daiteke jokoen ROM originaletatik ateratzea lortu den iturburu kodea.</p>
+    <p class="text-white text-xl py-2">Iturburu kode hau zuzenean editatu daiteke kode editore bat erabiliz, <a class="text-red-400 hover:text-red-700" href="https://code.visualstudio.com/download" target="_blank">VSCode</a>, esaterako. Jokoaren arabera itzulpena egiteko era aldatzen bada ere,
+      joko klasikoenetan erraza da ingelesezko testu originala identifikatu eta aldatzea. Gamerauntsiako telegrameko kanalean edo discordean eska dezakezu itzulpenak egiten ikasteko laguntza.</p>
+    <p class="text-white text-xl py-2">Joko berriagoak askoz proiektu handiagoak eta modernoagoak izan ohi dira, eta, askotan, tresna bereziak behar izaten dira joko hauek itzultzeko. Hasi nahi baduzu, egokiagoa
+      izango da, ziurrenik, joko klasikoago bat aukeratzea. Kasu horretan, kopiatu itzuli nahi duzun jokoaren Githubeko errepositorioa (egin fork bat) eta hasi zuzenean kodea editatzen.</p>
+    <p class="text-white text-xl py-2"><b>Eta, batez ere, nondik hasi ez badakizu, programatzen ez dakizulako, adibidez, eskatu laguntza beldurrik gabe! Gamerauntsiako kanalak egokiak dira horretarako.</b></p>
+    <h2 class="text-2xl font-bold m-6 text-white">Terminologia</h2>
+    <p class="text-white text-xl py-2">Pokémonen jokoen mundua zabala da: eraso, objektu, leku eta izenen artean, milaka hitz daude itzuli behar direnak. Horregatik, garrantzitsua da, jokoen arteko koherentzia mantentzeko,
+      terminologia bateratu bat erabiltzea.</p>
+    <p class="text-white text-xl py-2">Horretarako dago <a class="text-red-400 hover:text-red-700" href="terminoen_hiztegia.html"></a>Terminoen Hiztegia. Hiztegi honen helburua da belaunaldi guztietako joko guztietan izen berdinak erabiltzea, kohesioa mantentzeko.</p>
+    <p class="text-white text-xl py-2">Lehen bertsioa prest badago ere, komunitateak bete behar du hiztegi hau. Beraz, aldaketaren bat proposatu nahi bazenu, edo termino berriak proposatu, issue bat ireki dezakezu oraingoz <a href="" target="_blank">web orri honen Githubeko errepositorioan</a>.</p>
+  </div>
+  <h1 id="fangameak_jarraibideak" class="text-4xl font-bold m-6 text-white">Pokémonen Fangameak egiteko jarraibideak</h1>
+  <div class="bg-gray-100 bg-opacity-20 rounded-xl items-stretch shadow-xl my-4 w-full p-6">
+
+  </div>
   <script>
     const btn = document.getElementById("backToTop");
     btn.addEventListener("click", () => {

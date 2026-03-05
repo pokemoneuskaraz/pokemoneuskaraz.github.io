@@ -179,10 +179,19 @@
   background: linear-gradient(135deg, #4B0082, #9370DB);
 }
 
+@font-face {
+  font-family: pokemonFont;
+  src: url(fonts/power\ clear.ttf);
+}
+
 body {
   background-image: url("pokeball_dark.jpeg");
   background-repeat: repeat;
   background-size: 80px;
+}
+
+html {
+  font-family: pokemonFont !important;
 }
 
 .clickable {
