@@ -36,6 +36,7 @@ async function showApiInformation(){
         for (let row of data) {
             if (row[0] && row[0].toString().toLowerCase() === id.toString().toLowerCase()) {
                 const nameBasque = document.getElementById("nameBasque").innerHTML = row[1].replace(/^./, str => str.toUpperCase());
+                const descriptionbasque = document.getElementById("deskribapenaTxt").innerText = row[3]; 
                 break;
             }
         }
@@ -77,8 +78,63 @@ async function showApiInformation(){
                 hiddenAbilities.push(ability.ability.name);
             }
         });
-        const abilityVal = document.getElementById("abilityVal").innerHTML = commonAbilities.toString();
-        const hiddenAbilityVal = document.getElementById("hiddenAbilityVal").innerHTML = hiddenAbilities.toString();
+
+    let commonAbilitiesBasque = [];
+    let hiddenAbilitiesBasque = [];
+
+    const sheetAbilities = workbookPokedex.Sheets["abileziak"];
+    const dataAbilities = XLSX.utils.sheet_to_json(sheetAbilities, { header: 1 });
+
+    // Normalize text: lowercase + remove spaces, dashes, symbols, etc.
+    function normalizeAbility(str) {
+        return str
+            .toString()
+            .toLowerCase()
+            .replace(/[^a-z0-9]/g, "");
+    }
+
+    // Translate abilities
+    function translateAbilities(abilities) {
+        let translated = [];
+
+        for (let ability of abilities) {
+            let found = false;
+            const normalizedAbility = normalizeAbility(ability);
+
+            for (let row of dataAbilities) {
+                if (
+                    row[0] &&
+                    normalizeAbility(row[0]) === normalizedAbility
+                ) {
+                    translated.push(
+                        row[1]
+                            .toString()
+                            .replace(/^./, str => str.toUpperCase())
+                    );
+
+                    found = true;
+                    break;
+                }
+            }
+
+            // Fallback to English if not found
+            if (!found) {
+                translated.push(ability);
+            }
+        }
+
+        return translated;
+    }
+
+    commonAbilitiesBasque = translateAbilities(commonAbilities);
+    hiddenAbilitiesBasque = translateAbilities(hiddenAbilities);
+
+    // Display results
+    document.getElementById("abilityVal").innerHTML =
+        commonAbilitiesBasque.join(", ");
+
+    document.getElementById("hiddenAbilityVal").innerHTML =
+        hiddenAbilitiesBasque.join(", ");
 
         // Set egg groups
         var eggGroupsEnglish = [];
@@ -132,6 +188,11 @@ async function showApiInformation(){
         // Set window title
         document.title = `EusPdéx: ${basqueName}`
 
+        // Animate the left information card
+        const txartela = document.getElementById("txartela");
+
+        txartela.classList.remove("scale-x-0", "opacity-0");
+        txartela.classList.add("scale-x-100", "opacity-100");
         // Set images
     var images = pokemonJson.sprites.versions;
     var genIndex = 1;
