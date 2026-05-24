@@ -1,10 +1,5 @@
 showApiInformation();
 async function showApiInformation(){
-    // Animate the left information card
-    const txartela = document.getElementById("txartela");
-
-    txartela.classList.remove("scale-x-0", "opacity-0");
-    txartela.classList.add("scale-x-100", "opacity-100");
     // First get the pokeapi data given a name
     var pokemonId = sessionStorage.getItem("selectedPokemonId");
     var pokemonUrl = `https://pokeapi.co/api/v2/pokemon/${pokemonId}`
