@@ -82,7 +82,7 @@
 
         imageCell.appendChild(img);
         tr.appendChild(imageCell);
-        row.forEach(cell => {
+        row.slice(0, 3).forEach(cell => {
           const cellElem = document.createElement('td');
           cellElem.className = 'px-6 py-4 clickable';
           cellElem.textContent = cell ?? '';
